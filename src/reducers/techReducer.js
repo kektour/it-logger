@@ -2,7 +2,7 @@ import {
   GET_TECHS,
   ADD_TECH,
   DELETE_TECH,
-  SET_LOADING,
+  SET_TECHS_LOADING,
   TECHS_ERROR
 } from '../actions/types';
 
@@ -20,7 +20,7 @@ export default function(state = initialState, action) {
         loading: false,
         techs: action.payload
       };
-    case SET_LOADING:
+    case SET_TECHS_LOADING:
       return {
         ...state,
         loading: true

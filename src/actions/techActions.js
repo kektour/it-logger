@@ -2,7 +2,7 @@ import {
   GET_TECHS,
   ADD_TECH,
   DELETE_TECH,
-  SET_LOADING,
+  SET_TECHS_LOADING,
   TECHS_ERROR
 } from './types';
 
@@ -29,6 +29,6 @@ export function getTechs() {
 
 export function setLoading() {
   return {
-    type: SET_LOADING
+    type: SET_TECHS_LOADING
   };
 }
