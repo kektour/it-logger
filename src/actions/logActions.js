@@ -25,7 +25,7 @@ export function getLogs() {
     } catch (err) {
       dispatch({
         type: LOGS_ERROR,
-        payload: err.response.data
+        payload: err.response.statusText
       });
     }
   };
@@ -46,7 +46,7 @@ export function searchLogs(text) {
     } catch (err) {
       dispatch({
         type: LOGS_ERROR,
-        payload: err.response.data
+        payload: err.response.statusText
       });
     }
   };
@@ -71,7 +71,7 @@ export function addLog(log) {
     } catch (err) {
       dispatch({
         type: LOGS_ERROR,
-        payload: err.response.data
+        payload: err.response.statusText
       });
     }
   };
@@ -91,7 +91,7 @@ export function deleteLog(id) {
     } catch (err) {
       dispatch({
         type: LOGS_ERROR,
-        payload: err.response.data
+        payload: err.response.statusText
       });
     }
   };
@@ -116,7 +116,7 @@ export function updateLog(log) {
     } catch (err) {
       dispatch({
         type: LOGS_ERROR,
-        payload: err.response.data
+        payload: err.response.statusText
       });
     }
   };
