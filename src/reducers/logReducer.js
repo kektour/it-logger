@@ -6,7 +6,8 @@ import {
   DELETE_LOG,
   SET_CURRENT,
   CLEAR_CURRENT,
-  UPDATE_LOG
+  UPDATE_LOG,
+  SEARCH_LOGS
 } from '../actions/types';
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_LOGS:
+    case SEARCH_LOGS:
       return {
         ...state,
         loading: false,

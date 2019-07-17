@@ -6,13 +6,14 @@ import {
   DELETE_LOG,
   SET_CURRENT,
   CLEAR_CURRENT,
-  UPDATE_LOG
+  UPDATE_LOG,
+  SEARCH_LOGS
 } from './types';
 
 export function getLogs() {
   return async function(dispatch) {
     try {
-      setLoading(); // dispatch(setLoading());
+      dispatch(setLoading());
 
       const res = await fetch('/logs');
       const data = await res.json();
@@ -30,10 +31,31 @@ export function getLogs() {
   };
 }
 
+export function searchLogs(text) {
+  return async function(dispatch) {
+    try {
+      dispatch(setLoading());
+
+      const res = await fetch(`/logs?q=${text}`);
+      const data = await res.json();
+
+      dispatch({
+        type: SEARCH_LOGS,
+        payload: data
+      });
+    } catch (err) {
+      dispatch({
+        type: LOGS_ERROR,
+        payload: err.response.data
+      });
+    }
+  };
+}
+
 export function addLog(log) {
   return async function(dispatch) {
     try {
-      setLoading();
+      dispatch(setLoading());
 
       const res = await fetch('/logs', {
         method: 'POST',
@@ -58,7 +80,7 @@ export function addLog(log) {
 export function deleteLog(id) {
   return async function(dispatch) {
     try {
-      setLoading();
+      dispatch(setLoading());
 
       await fetch(`/logs/${id}`, { method: 'DELETE' });
 
@@ -78,7 +100,7 @@ export function deleteLog(id) {
 export function updateLog(log) {
   return async function(dispatch) {
     try {
-      setLoading();
+      dispatch(setLoading());
 
       const res = await fetch(`/logs/${log.id}`, {
         method: 'PUT',
