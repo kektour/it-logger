@@ -20,6 +20,12 @@ export default function(state = initialState, action) {
         loading: false,
         techs: action.payload
       };
+    case ADD_TECH:
+      return {
+        ...state,
+        loading: false,
+        techs: [...state.techs, action.payload]
+      };
     case SET_TECHS_LOADING:
       return {
         ...state,
