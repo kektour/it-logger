@@ -52,6 +52,26 @@ export function addTech(tech) {
   };
 }
 
+export function deleteTech(id) {
+  return async function(dispatch) {
+    try {
+      dispatch(setLoading());
+
+      await fetch(`/techs/${id}`, { method: 'DELETE' });
+
+      dispatch({
+        type: DELETE_TECH,
+        payload: id
+      });
+    } catch (err) {
+      dispatch({
+        type: TECHS_ERROR,
+        payload: err.response.statusText
+      });
+    }
+  };
+}
+
 export function setLoading() {
   return {
     type: SET_TECHS_LOADING
